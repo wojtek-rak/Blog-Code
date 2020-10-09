@@ -1,0 +1,72 @@
+// * Summary *
+
+BenchmarkDotNet=v0.12.1, OS=Windows 10.0.17134.1726 (1803/April2018Update/Redstone4)
+Intel Core i7-7700HQ CPU 2.80GHz (Kaby Lake), 1 CPU, 8 logical and 4 physical cores
+Frequency=2742186 Hz, Resolution=364.6726 ns, Timer=TSC
+.NET Core SDK=3.1.401
+  [Host]     : .NET Core 3.1.7 (CoreCLR 4.700.20.36602, CoreFX 4.700.20.37001), X64 RyuJIT
+  DefaultJob : .NET Core 3.1.7 (CoreCLR 4.700.20.36602, CoreFX 4.700.20.37001), X64 RyuJIT
+
+
+|                    Method |      Mean |    Error |    StdDev |    Median |  Gen 0 | Gen 1 | Gen 2 | Allocated |
+|-------------------------- |----------:|---------:|----------:|----------:|-------:|------:|------:|----------:|
+|           Interpolation_2 |  57.92 ns | 1.782 ns |  5.113 ns |  55.86 ns | 0.0101 |     - |     - |      32 B |
+|           Interpolation_3 | 135.54 ns | 1.542 ns |  1.367 ns | 134.93 ns | 0.0305 |     - |     - |      96 B |
+|           Interpolation_4 | 186.96 ns | 1.869 ns |  1.748 ns | 186.66 ns | 0.0381 |     - |     - |     120 B |
+|           Interpolation_5 | 228.93 ns | 1.758 ns |  1.373 ns | 228.66 ns | 0.0432 |     - |     - |     136 B |
+|           Interpolation_6 | 298.90 ns | 4.314 ns |  3.824 ns | 298.59 ns | 0.0505 |     - |     - |     160 B |
+|           Interpolation_7 | 337.55 ns | 3.830 ns |  3.582 ns | 336.58 ns | 0.0558 |     - |     - |     176 B |
+|           Interpolation_8 | 377.06 ns | 5.631 ns |  4.992 ns | 375.95 ns | 0.0634 |     - |     - |     200 B |
+|           Interpolation_9 | 433.29 ns | 6.036 ns |  5.646 ns | 433.08 ns | 0.0687 |     - |     - |     216 B |
+|          Interpolation_10 | 474.69 ns | 1.214 ns |  1.014 ns | 474.27 ns | 0.0763 |     - |     - |     240 B |
+|          InterpolationFor |  43.70 ns | 0.377 ns |  0.353 ns |  43.83 ns | 0.0101 |     - |     - |      32 B |
+|            PlusOperator_2 |  51.59 ns | 0.124 ns |  0.116 ns |  51.55 ns | 0.0101 |     - |     - |      32 B |
+|            PlusOperator_3 | 136.66 ns | 1.119 ns |  1.047 ns | 136.86 ns | 0.0305 |     - |     - |      96 B |
+|            PlusOperator_4 | 190.02 ns | 3.914 ns |  6.539 ns | 186.22 ns | 0.0381 |     - |     - |     120 B |
+|            PlusOperator_5 | 231.21 ns | 1.832 ns |  1.530 ns | 230.65 ns | 0.0429 |     - |     - |     136 B |
+|            PlusOperator_6 | 296.83 ns | 0.794 ns |  0.663 ns | 296.72 ns | 0.0505 |     - |     - |     160 B |
+|            PlusOperator_7 | 356.03 ns | 7.216 ns | 10.348 ns | 353.72 ns | 0.0558 |     - |     - |     176 B |
+|            PlusOperator_8 | 381.52 ns | 6.731 ns | 12.806 ns | 375.59 ns | 0.0634 |     - |     - |     200 B |
+|            PlusOperator_9 | 433.56 ns | 5.377 ns |  5.030 ns | 432.11 ns | 0.0687 |     - |     - |     216 B |
+|           PlusOperator_10 | 474.35 ns | 1.020 ns |  0.852 ns | 474.08 ns | 0.0763 |     - |     - |     240 B |
+|           PlusOperatorFor |  43.79 ns | 0.474 ns |  0.370 ns |  43.86 ns | 0.0101 |     - |     - |      32 B |
+|       StringConcatenate_2 |  52.62 ns | 0.178 ns |  0.148 ns |  52.63 ns | 0.0101 |     - |     - |      32 B |
+|       StringConcatenate_3 | 135.05 ns | 0.701 ns |  0.622 ns | 135.22 ns | 0.0305 |     - |     - |      96 B |
+|       StringConcatenate_4 | 190.69 ns | 1.998 ns |  1.669 ns | 190.01 ns | 0.0381 |     - |     - |     120 B |
+|       StringConcatenate_5 | 239.76 ns | 4.974 ns |  8.172 ns | 243.68 ns | 0.0432 |     - |     - |     136 B |
+|       StringConcatenate_6 | 294.47 ns | 3.108 ns |  2.755 ns | 293.09 ns | 0.0505 |     - |     - |     160 B |
+|       StringConcatenate_7 | 328.38 ns | 1.024 ns |  0.800 ns | 328.15 ns | 0.0558 |     - |     - |     176 B |
+|       StringConcatenate_8 | 370.78 ns | 1.717 ns |  1.434 ns | 370.55 ns | 0.0634 |     - |     - |     200 B |
+|       StringConcatenate_9 | 432.05 ns | 8.636 ns | 12.386 ns | 424.91 ns | 0.0687 |     - |     - |     216 B |
+|      StringConcatenate_10 | 479.28 ns | 3.474 ns |  3.249 ns | 479.71 ns | 0.0763 |     - |     - |     240 B |
+|      StringConcatenateFor |  42.60 ns | 0.045 ns |  0.037 ns |  42.60 ns | 0.0101 |     - |     - |      32 B |
+|              StringJoin_2 |  83.12 ns | 1.407 ns |  1.316 ns |  83.60 ns | 0.0229 |     - |     - |      72 B |
+|              StringJoin_3 | 109.51 ns | 0.301 ns |  0.252 ns | 109.41 ns | 0.0254 |     - |     - |      80 B |
+|              StringJoin_4 | 137.00 ns | 2.448 ns |  2.044 ns | 136.09 ns | 0.0305 |     - |     - |      96 B |
+|              StringJoin_5 | 162.62 ns | 1.338 ns |  1.186 ns | 162.81 ns | 0.0329 |     - |     - |     104 B |
+|              StringJoin_6 | 188.03 ns | 0.879 ns |  0.779 ns | 187.75 ns | 0.0381 |     - |     - |     120 B |
+|              StringJoin_7 | 220.66 ns | 3.876 ns |  3.436 ns | 219.57 ns | 0.0408 |     - |     - |     128 B |
+|              StringJoin_8 | 243.47 ns | 0.619 ns |  0.483 ns | 243.32 ns | 0.0458 |     - |     - |     144 B |
+|              StringJoin_9 | 300.22 ns | 1.164 ns |  1.089 ns | 300.37 ns | 0.0482 |     - |     - |     152 B |
+|             StringJoin_10 | 329.34 ns | 1.111 ns |  0.927 ns | 329.09 ns | 0.0534 |     - |     - |     168 B |
+|            StringFormat_2 | 199.96 ns | 4.025 ns |  3.953 ns | 199.39 ns | 0.0100 |     - |     - |      32 B |
+|            StringFormat_3 | 270.16 ns | 0.650 ns |  0.508 ns | 269.91 ns | 0.0100 |     - |     - |      32 B |
+|            StringFormat_4 | 437.38 ns | 3.656 ns |  3.241 ns | 438.58 ns | 0.0300 |     - |     - |      96 B |
+|            StringFormat_5 | 528.97 ns | 9.604 ns |  8.019 ns | 526.46 ns | 0.0324 |     - |     - |     104 B |
+|            StringFormat_6 | 635.00 ns | 1.873 ns |  1.660 ns | 634.78 ns | 0.0381 |     - |     - |     120 B |
+|            StringFormat_7 | 691.87 ns | 1.405 ns |  1.097 ns | 691.69 ns | 0.0401 |     - |     - |     128 B |
+|            StringFormat_8 | 767.37 ns | 1.354 ns |  1.057 ns | 767.23 ns | 0.0448 |     - |     - |     144 B |
+|            StringFormat_9 | 863.78 ns | 9.598 ns |  8.978 ns | 865.08 ns | 0.0477 |     - |     - |     152 B |
+|           StringFormat_10 | 935.27 ns | 4.630 ns |  4.105 ns | 934.12 ns | 0.0525 |     - |     - |     168 B |
+|           StringFormatFor | 202.71 ns | 4.187 ns |  4.654 ns | 200.36 ns | 0.0100 |     - |     - |      32 B |
+|     StringBuilderAppend_2 |  75.60 ns | 0.751 ns |  0.587 ns |  75.50 ns | 0.0433 |     - |     - |     136 B |
+|     StringBuilderAppend_3 |  87.53 ns | 0.942 ns |  0.835 ns |  87.21 ns | 0.0433 |     - |     - |     136 B |
+|     StringBuilderAppend_4 | 107.97 ns | 2.338 ns |  2.296 ns | 108.07 ns | 0.0458 |     - |     - |     144 B |
+|     StringBuilderAppend_5 | 119.43 ns | 0.260 ns |  0.217 ns | 119.52 ns | 0.0458 |     - |     - |     144 B |
+|     StringBuilderAppend_6 | 138.40 ns | 0.752 ns |  0.703 ns | 138.02 ns | 0.0484 |     - |     - |     152 B |
+|     StringBuilderAppend_7 | 158.41 ns | 3.218 ns |  8.365 ns | 155.12 ns | 0.0484 |     - |     - |     152 B |
+|     StringBuilderAppend_8 | 172.96 ns | 3.482 ns |  3.257 ns | 172.77 ns | 0.0508 |     - |     - |     160 B |
+|     StringBuilderAppend_9 | 300.76 ns | 2.570 ns |  2.278 ns | 301.47 ns | 0.0839 |     - |     - |     264 B |
+|    StringBuilderAppend_10 | 315.60 ns | 1.573 ns |  1.313 ns | 315.03 ns | 0.0863 |     - |     - |     272 B |
+|    StringBuilderAppendFor |  77.03 ns | 1.729 ns |  2.588 ns |  75.91 ns | 0.0433 |     - |     - |     136 B |
+| StringBuilderAppendForNew |  54.41 ns | 1.277 ns |  1.367 ns |  54.52 ns | 0.0331 |     - |     - |     104 B |
