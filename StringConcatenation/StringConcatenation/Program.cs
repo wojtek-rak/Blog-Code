@@ -33,6 +33,14 @@ namespace StringConcatenation
         public string string9 = "9";
         public string string10 = "10";
 
+        //Interpolation
+
+        [Benchmark]
+        public string Interpolation_1()
+        {
+            return $"{string1}{string2}";
+        }
+
         [Benchmark]
         public string Interpolation_2()
         {
@@ -87,17 +95,12 @@ namespace StringConcatenation
             return $"{string1} {string2} {string3} {string4} {string5} {string6} {string7} {string8} {string9} {string10}";
         }
 
+        //Plus
+
         [Benchmark]
-        public string InterpolationFor()
+        public string PlusOperator_1()
         {
-            var start = "";
-
-            for (int i = 0; i < length; i++)
-            {
-                start = $"{start} {string1}";
-            }
-
-            return start;
+            return string1 + string2;
         }
 
         [Benchmark]
@@ -154,17 +157,12 @@ namespace StringConcatenation
             return string1 + " " + string2 + " " + string3 + " " + string4 + " " + string5 + " " + string6 + " " + string7 + " " + string8 + " " + string9 + " " + string10;
         }
 
+        //Concat
+
         [Benchmark]
-        public string PlusOperatorFor()
+        public string StringConcatenate_1()
         {
-            var start = "";
-
-            for (int i = 0; i < length; i++)
-            {
-                start = start + " " + string1;
-            }
-
-            return start;
+            return string.Concat(string1, string2);
         }
 
         [Benchmark]
@@ -221,17 +219,12 @@ namespace StringConcatenation
             return string.Concat(string1, " ", string2, " ", string3, " ", string4, " ", string5, " ", string6, " ", string7, " ", string8, " ", string9, " ", string10);
         }
 
+        //Join
+
         [Benchmark]
-        public string StringConcatenateFor()
+        public string StringJoin_1()
         {
-            var start = "";
-
-            for (int i = 0; i < length; i++)
-            {
-                start = string.Concat(start, " ", string1);
-            }
-
-            return start;
+            return string.Join("", string1, string2);
         }
 
         [Benchmark]
@@ -288,16 +281,12 @@ namespace StringConcatenation
             return string.Join(" ", string1, string2, string3, string4, string5, string6, string7, string8, string9, string10);
         }
 
-        public string StringJoinFor()
+        //Format
+
+        [Benchmark]
+        public string StringFormat_1()
         {
-            var start = "";
-
-            for (int i = 0; i < length; i++)
-            {
-                start = string.Join(" ", start, string1);
-            }
-
-            return start;
+            return string.Format("{0}{1}", string1, string2);
         }
 
         [Benchmark]
@@ -354,17 +343,15 @@ namespace StringConcatenation
             return string.Format("{0} {1} {2} {3} {4} {5} {6} {7} {8} {9}", string1, string2, string3, string4, string5, string6, string7, string8, string9, string10);
         }
 
+        //StringBuilder
+
         [Benchmark]
-        public string StringFormatFor()
+        public string StringBuilderAppend_1()
         {
-            var start = "";
-
-            for (int i = 0; i < length; i++)
-            {
-                start = string.Format("{0} {1}", start, string1);
-            }
-
-            return start;
+            StringBuilder builder = new StringBuilder();
+            builder.Append(string1);
+            builder.Append(string2);
+            return builder.ToString();
         }
 
         [Benchmark]
@@ -527,6 +514,73 @@ namespace StringConcatenation
             builder.Append(" ");
             builder.Append(string10);
             return builder.ToString();
+        }
+
+        //For loops
+
+        [Benchmark]
+        public string InterpolationFor()
+        {
+            var start = "";
+
+            for (int i = 0; i < length; i++)
+            {
+                start = $"{start} {string1}";
+            }
+
+            return start;
+        }
+
+        [Benchmark]
+        public string PlusOperatorFor()
+        {
+            var start = "";
+
+            for (int i = 0; i < length; i++)
+            {
+                start = start + " " + string1;
+            }
+
+            return start;
+        }
+
+        [Benchmark]
+        public string StringConcatenateFor()
+        {
+            var start = "";
+
+            for (int i = 0; i < length; i++)
+            {
+                start = string.Concat(start, " ", string1);
+            }
+
+            return start;
+        }
+
+        [Benchmark]
+        public string StringJoinFor()
+        {
+            var start = "";
+
+            for (int i = 0; i < length; i++)
+            {
+                start = string.Join(" ", start, string1);
+            }
+
+            return start;
+        }
+
+        [Benchmark]
+        public string StringFormatFor()
+        {
+            var start = "";
+
+            for (int i = 0; i < length; i++)
+            {
+                start = string.Format("{0} {1}", start, string1);
+            }
+
+            return start;
         }
 
         [Benchmark]
